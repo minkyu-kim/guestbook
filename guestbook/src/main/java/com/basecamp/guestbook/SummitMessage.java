@@ -1,6 +1,7 @@
 package com.basecamp.guestbook;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -68,6 +69,7 @@ public class SummitMessage implements Servlet {
 	 * @see Servlet#service(ServletRequest request, ServletResponse response)
 	 */
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String text = request.getParameter("text");
@@ -86,6 +88,7 @@ public class SummitMessage implements Servlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">location.href=\"../guestbook\";</script>");
 	}
-
 }
