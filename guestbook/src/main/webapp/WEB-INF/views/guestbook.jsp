@@ -23,5 +23,6 @@
 			</tr>
 		</table>
 	</form>
+	<input type="button" value="출력" onClick="location.href='./PrintMessage'"/>
 </body>
 </html>

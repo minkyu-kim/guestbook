@@ -16,5 +16,15 @@
 		<servlet-name>SummitMessage</servlet-name>
 		<url-pattern>/SummitMessage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>PrintMessage</servlet-name>
+		<servlet-class>com.basecamp.guestbook.PrintMessage</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>PrintMessage</servlet-name>
+		<url-pattern>/PrintMessage</url-pattern>
+	</servlet-mapping>
 
 </web-app>
