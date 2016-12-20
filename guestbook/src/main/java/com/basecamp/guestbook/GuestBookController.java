@@ -9,7 +9,6 @@ import java.sql.Statement;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class GuestBookController {
@@ -19,7 +18,7 @@ public class GuestBookController {
 		Connection con=null;
 		Statement st;
 		ResultSet rs = null;
-		String query = "SELECT * from messages ORDER BY id DESC";
+		String query = "SELECT * from messages ORDER BY id DESC;";
 		String html="<table>";
 		
 		try {
@@ -33,6 +32,8 @@ public class GuestBookController {
 					html+="<td>"+rs.getString("id")+"</td>";
 					html+="<td>"+rs.getString("email")+"</td>";
 					html+="<td>"+rs.getString("message").replaceAll("\n", "</br>")+"</td>";
+					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"¼öÁ¤\""+
+							" onclick='modify("+rs.getString("id")+");' /></td>";
 			        html+="</tr>";
 				}
 			}

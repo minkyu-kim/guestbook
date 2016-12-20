@@ -9,6 +9,8 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath}/resources/js/hash.js"></script>
 <script>
 	function textCheck(text) {
 		if (text.length == 0) {
@@ -19,16 +21,6 @@
 			return false;
 		}
 		return true;
-	}
-
-	function hash(password) {
-		var hashedValue = 1;
-		for ( var character in password) {
-			hashedValue *= 101;
-			hashedValue += character;
-			hashedValue %= 1000000007;
-		}
-		return hashedValue;
 	}
 
 	function passwordCheck(pass) {
@@ -75,9 +67,9 @@
 				<form id="submitForm" class="form-inline" method="post"
 					action="./submit">
 					<div class="form-group">
-
-						<label for="email"> 이메일 </label> <input type="email"
-							class="form-control" id="email" name="email">
+						<input type="hidden" id="id" name="id" value="${id}"> <label
+							for="email"> 이메일 </label> <input type="email"
+							class="form-control" id="email" name="email" value="${email}">
 					</div>
 					<div class="form-group">
 
@@ -89,7 +81,7 @@
 
 						<label for="text"> 본문 </label>
 						<textarea class="form-control" style="width: 200%; height: 100"
-							id="text" name="text"></textarea>
+							id="text" name="text">${text}</textarea>
 					</div>
 					<br>
 					<button type="button" class="btn btn-default"
@@ -99,11 +91,5 @@
 			</div>
 		</div>
 	</div>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.basecamp.guestbook;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,18 +17,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SubmitController {
 
 	@RequestMapping(value = "/submit")
-	public String home(Model model, HttpServletRequest request) {
+	public String home(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
 		Connection con=null;
 		Statement st;
 		int rs;
 
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		if(email==null) return "forward:/"; // http://...../submit을 직접 타이핑하여 접속한 경우
 		String password = request.getParameter("hashedPass");
 		String text = request.getParameter("text");
-		String query = "INSERT INTO messages (email, pass, message) VALUES (\'" +
-				email + "\', " + password + ", \'" + text + "\')";
-
+		String query;
+		if(id=="") {
+			query = "INSERT INTO messages (email, pass, message) VALUES (\'" +
+				email + "\', " + password + ", \'" + text + "\');";
+		}
+		else {
+			query = "UPDATE messages SET email=\'"+email+"\', pass=\'"+password+"\', message=\'"+text+
+					"\' WHERE id=\'"+id+"\';";
+		}
+		System.out.println(query);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/guestbookdb","guestbook","rlaalsrb12");
