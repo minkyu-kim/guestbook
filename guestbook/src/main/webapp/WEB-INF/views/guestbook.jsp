@@ -4,9 +4,51 @@
 <html>
 <head>
 	<title>NHN Ent. Guestbook</title>
+	<script>
+		function textCheck(text) {
+			if(text.length==0) {
+				alert("본문 내용을 입력하세요.");
+				return false;
+			}
+			else if(text.length>300) {
+				alert("300자 이하의 길이로 입력하세요.");
+				return false;
+			}
+			return true;
+		}
+		
+		function passwordCheck(pass) {
+			if(pass.length<4) {
+				alert("4자 이상의 비밀번호를 입력하세요.");
+				document.getElementById('password').value="";
+				return false;
+			}
+			return true;
+		}
+		
+		function emailCheck(email) {
+			return true;
+		}
+	
+		function validationCheck() {
+			if(textCheck(document.getElementById('text').value)!=true) {
+				return false;
+			}
+			if(passwordCheck(document.getElementById('password').value)!=true) {
+				return false;
+			}
+			if(emailCheck(document.getElementById('email').value)!=true) {
+				return false;
+			}
+			else {
+				document.getElementById('submitForm').submit();
+				return true;
+			}
+		}
+	</script>
 </head>
 <body>
-	<form name="summitForm" method="post" action="SummitMessage">
+	<form id="submitForm" method="post" action="./SubmitMessage">
 		<table>
 			<tr>
 				<td>이메일</td>
@@ -18,7 +60,7 @@
 				<td colspan="4">
 					본문 <br>
 					<textarea name="text" id="text" cols="50" rows="5"></textarea><br>
-					<input type="submit" value="저장" />
+					<input type="button" value="저장" onclick='validationCheck();' />
 				</td>
 			</tr>
 		</table>

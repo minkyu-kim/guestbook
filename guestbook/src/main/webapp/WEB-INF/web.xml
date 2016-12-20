@@ -8,13 +8,13 @@
     </welcome-file-list>
 	
 	<servlet>
-		<servlet-name>SummitMessage</servlet-name>
-		<servlet-class>com.basecamp.guestbook.SummitMessage</servlet-class>
+		<servlet-name>SubmitMessage</servlet-name>
+		<servlet-class>com.basecamp.guestbook.SubmitMessage</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>SummitMessage</servlet-name>
-		<url-pattern>/SummitMessage</url-pattern>
+		<servlet-name>SubmitMessage</servlet-name>
+		<url-pattern>/SubmitMessage</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

@@ -16,7 +16,7 @@ import javax.servlet.ServletResponse;
 /**
  * Servlet implementation class SummitMessage
  */
-public class SummitMessage implements Servlet {
+public class SubmitMessage implements Servlet {
 	private Connection con=null;
 	/**
 	 * @see Servlet#init(ServletConfig)
