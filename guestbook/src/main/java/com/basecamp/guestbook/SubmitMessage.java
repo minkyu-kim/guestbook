@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -70,7 +71,7 @@ public class SubmitMessage implements Servlet {
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String password = request.getParameter("hashedPass");
 		String text = request.getParameter("text");
 		String query = "INSERT INTO messages (email, pass, message) VALUES (\'" +
 				email + "\', " + password + ", \'" + text + "\')";
@@ -78,7 +79,8 @@ public class SubmitMessage implements Servlet {
 		int rs;
 		System.out.println(query);
 		try {
-			if(con!=null) {
+			String regex = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+			if(Pattern.matches(regex, email) && con!=null) {
 				st = con.createStatement();
 				rs = st.executeUpdate(query);
 				System.out.println(rs);

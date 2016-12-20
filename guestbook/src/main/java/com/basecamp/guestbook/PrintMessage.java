@@ -82,7 +82,7 @@ public class PrintMessage implements Servlet {
 					html+="<tr>";
 					html+="<td>"+rs.getString("id")+"</td>";
 					html+="<td>"+rs.getString("email")+"</td>";
-					html+="<td>"+rs.getString("message")+"</td>";
+					html+="<td>"+rs.getString("message").replaceAll("\n", "</br>")+"</td>";
 			        html+="</tr>";
 				}
 			}
