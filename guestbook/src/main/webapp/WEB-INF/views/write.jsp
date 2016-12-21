@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
 <script
-	src="${pageContext.request.contextPath}/resources/js/hash.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/passwordHashing.js"></script>
 <script>
 	function textCheck(text) {
 		if (text.length == 0) {
@@ -29,7 +29,7 @@
 			document.getElementById('password').value = "";
 			return false;
 		}
-		document.getElementById('hashedPass').value = hash(pass);
+		document.getElementById('hashedPass').value = passHash(pass);
 		return true;
 	}
 

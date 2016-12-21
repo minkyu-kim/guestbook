@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
 <script
-	src="${pageContext.request.contextPath}/resources/js/hash.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/passwordHashing.js"></script>
 <script>
 	function modify(number) {
 		var password = prompt('등록시 입력한 비밀번호를 입력하세요', '');
@@ -25,7 +25,7 @@
 		var hashedPass = document.createElement("input");
 		hashedPass.setAttribute("type", "hidden");
 		hashedPass.setAttribute("name", "pass");
-		hashedPass.setAttribute("value", hash(password));
+		hashedPass.setAttribute("value", passHash(password));
 		form.appendChild(hashedPass);
 		document.body.appendChild(form);
 		form.submit();
