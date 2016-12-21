@@ -37,8 +37,7 @@ public class GuestBookController {
 						html+="<br>"+rs.getString("updateTime");
 					}
 					html+="</td>";
-					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"수정\""+
-							" onclick='modify("+rs.getString("id")+");' /></td>";
+					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"수정\"/></td>";
 			        html+="</tr>";
 				}
 			}

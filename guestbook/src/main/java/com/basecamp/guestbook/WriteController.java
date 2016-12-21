@@ -26,6 +26,7 @@ public class WriteController {
 			Statement st;
 			ResultSet rs = null;
 			String query = "SELECT * from messages WHERE id="+id+" AND pass="+pass+";";
+			System.out.println(query);
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/guestbookdb","guestbook","rlaalsrb12");
