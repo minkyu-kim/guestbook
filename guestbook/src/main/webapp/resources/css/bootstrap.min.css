@@ -11,7 +11,7 @@ html {
 }
 
 body {
-	margin: 0
+	margin: 10
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary
@@ -24,91 +24,13 @@ audio,canvas,progress,video {
 	vertical-align: baseline
 }
 
-audio
-
-
-
-
-
-
-
-
-:not
-
-
-
-
- 
-
-
-
-
-(
-[
-controls
-]
-
-
-
-
- 
-
-
-
-
-){
-display
-
-
-
-
-
-
-
-
-:
-
-
-
-
- 
-
-
-
-
-none
-
-
-
-
-
-
-
-
-;
-height
-
-
-
-
-
-
-
-
-:
-
-
-
-
- 
-
-
-
-
-0
+table {
+	table-layout: fixed;
 }
-[hidden],template {
-	display: none
+
+td {
+	word-break: break-all;
+	word-wrap: break-word;
 }
 
 a {
@@ -173,12 +95,24 @@ svg
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -189,7 +123,13 @@ svg
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -204,7 +144,16 @@ overflow
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -214,7 +163,16 @@ overflow
 
 
 
+
+
+
 hidden
+
+
+
+
+
+
 
 
 
@@ -246,7 +204,7 @@ code,kbd,pre,samp {
 	font-size: 1em
 }
 
-button,input,optgroup,select, {
+button,input,optgroup,select,textarea {
 	margin: 0;
 	font: inherit;
 	color: inherit
@@ -2984,8 +2942,7 @@ output {
 }
 
 textarea.form-control {
-	height: 200px
-	
+	height: auto
 }
 
 input[type=search] {
@@ -4033,12 +3990,24 @@ tbody.collapse.in {
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4049,7 +4018,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4060,7 +4035,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4071,7 +4052,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4082,7 +4069,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4094,7 +4087,13 @@ tbody.collapse.in {
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -4109,12 +4108,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4136,7 +4147,19 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
 
 
 
@@ -4150,7 +4173,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4161,7 +4190,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4172,7 +4207,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4183,7 +4224,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4198,12 +4245,24 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4218,12 +4277,24 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4241,7 +4312,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
 
 
 
@@ -4255,7 +4338,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4266,7 +4355,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4283,7 +4378,16 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :not
+
+
+
 
 
 
@@ -4294,13 +4398,22 @@ border-bottom-right-radius
 
 
 
+
+
+
 (
 :first-child
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4315,12 +4428,24 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4335,12 +4460,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4432,12 +4569,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4448,7 +4597,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4459,7 +4614,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4470,7 +4631,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4485,12 +4652,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4508,7 +4687,19 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
 
 
 
@@ -4522,7 +4713,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4533,7 +4730,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4548,7 +4751,16 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -4558,8 +4770,17 @@ border-top-right-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -4578,12 +4799,24 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4598,12 +4831,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4621,7 +4866,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
 
 
 
@@ -4635,7 +4892,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4646,7 +4909,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4661,12 +4930,24 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4681,12 +4962,24 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4701,7 +4994,16 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -4711,8 +5013,17 @@ border-bottom-left-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -4838,7 +5149,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4852,12 +5169,24 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4868,7 +5197,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4879,7 +5214,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4890,7 +5231,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4905,7 +5252,16 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
+
+
+
 :not
+
+
+
 
 
 
@@ -4916,13 +5272,22 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
 (
 :first-child
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4933,7 +5298,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4944,7 +5315,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4959,12 +5336,24 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4975,7 +5364,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4987,7 +5382,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -4998,7 +5399,13 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5013,12 +5420,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5065,12 +5484,24 @@ border-radius
 
 
 
+
+
+
  
 
 
 
 
+
+
+
 .form-control
+
+
+
+
+
+
 
 
 
@@ -5090,9 +5521,21 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -5106,6 +5549,12 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -5121,6 +5570,12 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -5142,9 +5597,21 @@ border-radius
 
 
 
+
+
+
+
+
+
 :last-child
 >
 .btn-group
+
+
+
+
+
+
 
 
 
@@ -5159,7 +5626,13 @@ border-radius
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -5170,7 +5643,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5187,6 +5666,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :last-child
 >
 .btn
@@ -5198,12 +5683,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5214,7 +5711,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5226,7 +5729,13 @@ border-radius
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -5237,7 +5746,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5252,12 +5767,24 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -5272,12 +5799,24 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 

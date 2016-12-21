@@ -19,7 +19,7 @@ public class GuestBookController {
 		Statement st;
 		ResultSet rs = null;
 		String query = "SELECT * from messages ORDER BY id DESC;";
-		String html="<table>";
+		String html="";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,8 +32,11 @@ public class GuestBookController {
 					html+="<td>"+rs.getString("id")+"</td>";
 					html+="<td>"+rs.getString("email")+"</td>";
 					html+="<td>"+rs.getString("message").replaceAll("\n", "</br>")+"</td>";
-					html+="<td>"+rs.getString("submitTime")+"</td>";
-					html+="<td>"+rs.getString("updateTime")+"</td>";
+					html+="<td>"+rs.getString("submitTime");
+					if(rs.getString("updateTime")!=null) {
+						html+="<br>"+rs.getString("updateTime");
+					}
+					html+="</td>";
 					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"¼öÁ¤\""+
 							" onclick='modify("+rs.getString("id")+");' /></td>";
 			        html+="</tr>";
@@ -48,8 +51,6 @@ public class GuestBookController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		html+="</table>";
 		
 		model.addAttribute("table", html);
 		

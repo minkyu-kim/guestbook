@@ -5,7 +5,7 @@
 <head>
 <title>NHN Ent. Guestbook</title>
 <link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css?ver=2"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
@@ -34,9 +34,24 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<input type="button"
-			class="btn btn-default" value="글쓰기" onClick="location.href='./write'" />
-		${table}
+		<input type="button" class="btn btn-default" value="글쓰기"
+			onClick="location.href='./write'" />
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th width="70">글번호</th>
+							<th width="180">이메일</th>
+							<th width="400">본문</th>
+							<th width="200">등록/수정 시각</th>
+							<th width="50"></th>
+						</tr>
+					</thead>
+					<tbody>${table}</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
