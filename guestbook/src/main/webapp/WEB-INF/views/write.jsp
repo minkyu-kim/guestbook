@@ -58,9 +58,14 @@
 			return true;
 		}
 	}
+	
+	function wrongPassword() {
+		alert("잘못된 비밀번호입니다.");
+		location.href="./";
+	}
 </script>
 </head>
-<body>
+<body ${onloadCode}>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">

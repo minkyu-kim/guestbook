@@ -21,7 +21,8 @@ public class WriteController {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
-		if(id!="null") {
+		System.out.println(id);
+		if(id!=null) {
 			Connection con=null;
 			Statement st;
 			ResultSet rs = null;
@@ -38,7 +39,7 @@ public class WriteController {
 						model.addAttribute("text", rs.getString("message"));
 					}
 					else {
-						// 비밀번호 틀렸을 때 예외 처리
+						model.addAttribute("onloadCode", "onload=wrongPassword()");
 					}
 				}
 				con.close();
