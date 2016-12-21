@@ -32,6 +32,8 @@ public class GuestBookController {
 					html+="<td>"+rs.getString("id")+"</td>";
 					html+="<td>"+rs.getString("email")+"</td>";
 					html+="<td>"+rs.getString("message").replaceAll("\n", "</br>")+"</td>";
+					html+="<td>"+rs.getString("submitTime")+"</td>";
+					html+="<td>"+rs.getString("updateTime")+"</td>";
 					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"¼öÁ¤\""+
 							" onclick='modify("+rs.getString("id")+");' /></td>";
 			        html+="</tr>";

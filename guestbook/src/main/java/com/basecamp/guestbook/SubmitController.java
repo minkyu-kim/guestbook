@@ -30,12 +30,12 @@ public class SubmitController {
 		String text = request.getParameter("text");
 		String query;
 		if(id=="") {
-			query = "INSERT INTO messages (email, pass, message) VALUES (\'" +
-				email + "\', " + password + ", \'" + text + "\');";
+			query = "INSERT INTO messages (email, pass, message, submitTime) VALUES (\'" +
+				email + "\', " + password + ", \'" + text + "\', now());";
 		}
 		else {
 			query = "UPDATE messages SET email=\'"+email+"\', pass=\'"+password+"\', message=\'"+text+
-					"\' WHERE id=\'"+id+"\';";
+					"\', updateTime=now() WHERE id=\'"+id+"\';";
 		}
 		System.out.println(query);
 		try {
