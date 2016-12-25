@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.basecamp.guestbook.Message" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.basecamp.guestbook.Message"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -53,7 +53,7 @@
 		});
 		$("[id^='modify']").button().on("click", function() {
 			dialog.dialog("open");
-			selectId=$(this).attr('id').substring(6);
+			selectId = $(this).attr('id').substring(6);
 		});
 	});
 </script>
@@ -87,21 +87,25 @@
 					</thead>
 					<tbody>
 						<%
-							ArrayList<Message> messages = (ArrayList<Message>)request.getAttribute("messages");
-							for(Message message : messages) {
+							ArrayList<Message> messages = (ArrayList<Message>) request
+									.getAttribute("messages");
+							for (Message message : messages) {
 						%>
-							<tr>
-								<td><%=message.getId()%></td>
-								<td><%=message.getEmail()%></td>
-								<td><%=message.getMessage().replaceAll("\n","</br>")%></td>
-								<td><%=message.getSubmitTime()%>
-								<%if(message.getUpdateTime()!=null) {%>
-								</br><%=message.getUpdateTime()%>
-								<% }%>
-								</td>
-								<td><input type="button" id="modify<%=message.getId()%>" value="수정"/></td>
-							</tr>
-						<% }%>
+						<tr>
+							<td><%=message.getId()%></td>
+							<td><%=message.getEmail()%></td>
+							<td><%=message.getMessage().replaceAll("\n", "</br>")%></td>
+							<td><%=message.getSubmitTime()%> <%
+							 	if (message.getUpdateTime() != null) {
+							 %> </br><%=message.getUpdateTime()%> <%
+							 	}
+							 %></td>
+							<td><input type="button" id="modify<%=message.getId()%>"
+								value="수정" /></td>
+						</tr>
+						<%
+							}
+						%>
 					</tbody>
 				</table>
 			</div>

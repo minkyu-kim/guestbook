@@ -3,9 +3,7 @@ package com.basecamp.guestbook;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,30 +21,22 @@ public class WriteController {
 		String pass = request.getParameter("pass");
 		if(id!=null) {
 			Connection con=null;
-			Statement st;
-			ResultSet rs = null;
-			String query = "SELECT * from messages WHERE id="+id+" AND pass="+pass+";";
-			System.out.println(query);
+			MessageDAO mdao = new MessageDAO();
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/guestbookdb","guestbook","rlaalsrb12");
-				if(con!=null) {
-					st = con.createStatement();
-					rs = st.executeQuery(query);
-					if(rs.next()) {	
-						model.addAttribute("id", rs.getString("id"));
-						model.addAttribute("email", rs.getString("email"));
-						model.addAttribute("text", rs.getString("message"));
-					}
-					else {
-						model.addAttribute("onloadCode", "onload=wrongPassword()");
-					}
+				mdao.setConnection(con);
+				ArrayList<Message> messages = (ArrayList<Message>)mdao.selectWithIdAndPass(Integer.parseInt(id), Integer.parseInt(pass));
+				if(messages.size()!=0) {	
+					model.addAttribute("id", messages.get(0).getId());
+					model.addAttribute("email", messages.get(0).getEmail());
+					model.addAttribute("text", messages.get(0).getMessage());
+				}
+				else {
+					model.addAttribute("onloadCode", "onload=wrongPassword()");
 				}
 				con.close();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -3,8 +3,6 @@ package com.basecamp.guestbook;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -21,8 +19,6 @@ public class SubmitController {
 	@RequestMapping(value = "/submit")
 	public String home(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
 		Connection con=null;
-		Statement st;
-		int rs;
 
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
@@ -30,33 +26,28 @@ public class SubmitController {
 		if(email==null) return "forward:/"; // http://...../submit을 직접 타이핑하여 접속한 경우
 		String password = request.getParameter("hashedPass");
 		String text = request.getParameter("text");
-		String query;
-		if(id=="") {
-			String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
-			query = "INSERT INTO messages (email, pass, message, submitTime) VALUES (\'" +
-				email + "\', " + password + ", \'" + text + "\', \'" + now + "\');";
-		}
-		else {
-			query = "UPDATE messages SET email=\'"+email+"\', pass=\'"+password+"\', message=\'"+text+
-					"\', updateTime=now() WHERE id=\'"+id+"\';";
-		}
-		System.out.println(query);
+		String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+		String regex = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/guestbookdb","guestbook","rlaalsrb12");
-			if(con!=null) {
-				String regex = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
-				if(Pattern.matches(regex, email) && con!=null) {
-					st = con.createStatement();
-					rs = st.executeUpdate(query);
+			MessageDAO mdao = new MessageDAO();
+			mdao.setConnection(con);
+			if(Pattern.matches(regex, email)) {
+				if(id=="") {
+					Message message = new Message().setEmail(email).setPass(Integer.parseInt(password)).
+							setMessage(text).setSubmitTime(now);
+					mdao.insert(message);
 				}
-				con.close();
+				else {
+					Message message = new Message().setEmail(email).setPass(Integer.parseInt(password)).
+							setMessage(text).setUpdateTime(now).setId(Integer.parseInt(id));
+					mdao.update(message);
+				}
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("DB connect fail.");
-		} catch (ClassNotFoundException e) {
+			con.close();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
