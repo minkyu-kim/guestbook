@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +32,9 @@ public class SubmitController {
 		String text = request.getParameter("text");
 		String query;
 		if(id=="") {
+			String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
 			query = "INSERT INTO messages (email, pass, message, submitTime) VALUES (\'" +
-				email + "\', " + password + ", \'" + text + "\', now());";
+				email + "\', " + password + ", \'" + text + "\', \'" + now + "\');";
 		}
 		else {
 			query = "UPDATE messages SET email=\'"+email+"\', pass=\'"+password+"\', message=\'"+text+

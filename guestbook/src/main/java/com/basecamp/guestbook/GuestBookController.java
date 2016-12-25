@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,27 +21,24 @@ public class GuestBookController {
 		Statement st;
 		ResultSet rs = null;
 		String query = "SELECT * from messages ORDER BY id DESC;";
-		String html="";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/guestbookdb","guestbook","rlaalsrb12");
+			ArrayList<Message> messages = new ArrayList<Message>();
 			if(con!=null) {
 				st = con.createStatement();
 				rs = st.executeQuery(query);
 				while (rs.next()) {
-					html+="<tr>";
-					html+="<td>"+rs.getString("id")+"</td>";
-					html+="<td>"+rs.getString("email")+"</td>";
-					html+="<td>"+rs.getString("message").replaceAll("\n", "</br>")+"</td>";
-					html+="<td>"+rs.getString("submitTime");
-					if(rs.getString("updateTime")!=null) {
-						html+="<br>"+rs.getString("updateTime");
+					Message message = new Message().
+						setId(rs.getInt("id")).setEmail(rs.getString("email")).setMessage(rs.getString("message")).
+						setSubmitTime(rs.getDate("submitTime").toString()+" "+rs.getTime("submitTime").toString());
+					if(rs.getDate("updateTime")!=null) {
+						message.setUpdateTime(rs.getDate("updateTime").toString()+" "+rs.getTime("updateTime").toString());
 					}
-					html+="</td>";
-					html+="<td><input type=\"button\" id=\"modify"+rs.getString("id")+"\" value=\"¼öÁ¤\"/></td>";
-			        html+="</tr>";
+					messages.add(message);
 				}
+				model.addAttribute("messages", messages);
 			}
 			con.close();
 		} catch (SQLException e) {
@@ -50,8 +49,6 @@ public class GuestBookController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		model.addAttribute("table", html);
 		
 		return "guestbook";
 	}
