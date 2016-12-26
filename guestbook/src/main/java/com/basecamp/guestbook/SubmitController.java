@@ -1,6 +1,5 @@
 package com.basecamp.guestbook;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -22,20 +21,18 @@ public class SubmitController {
 		String id = request.getParameter("id");
 		String email = request.getParameter("email");
 		if(email==null) return "forward:/"; // http://...../submit을 직접 타이핑하여 접속한 경우
-		String password = request.getParameter("hashedPass");
-		String text = request.getParameter("text");
-		String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
+		Date now = new Date(System.currentTimeMillis());
+		request.setAttribute("submitTime", now);
+		request.setAttribute("updateTime", now);
 		String regex = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
 		try {
 			if(Pattern.matches(regex, email)) {
 				if(id=="") {
-					Message message = new Message().setEmail(email).setPass(Integer.parseInt(password)).
-							setMessage(text).setSubmitTime(now);
+					Message message = new MessageDAO.MessageFiller().fill(request);
 					mdao.insert(message);
 				}
 				else {
-					Message message = new Message().setEmail(email).setPass(Integer.parseInt(password)).
-							setMessage(text).setUpdateTime(now).setId(Integer.parseInt(id));
+					Message message = new MessageDAO.MessageFiller().fill(request);
 					mdao.update(message);
 				}
 			}

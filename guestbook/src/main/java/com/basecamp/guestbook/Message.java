@@ -1,12 +1,14 @@
 package com.basecamp.guestbook;
 
+import java.util.Date;
+
 public class Message {
 	private int id;
 	private String email;
 	private int pass;
 	private String message;
-	private String submitTime;
-	private String updateTime;
+	private Date submitTime;
+	private Date updateTime;
 	
 	public int getId() {
 		return id;
@@ -44,20 +46,20 @@ public class Message {
 		return this;
 	}
 	
-	public String getSubmitTime() {
+	public Date getSubmitTime() {
 		return submitTime;
 	}
 		
-	public Message setSubmitTime(String submitTime) {
+	public Message setSubmitTime(Date submitTime) {
 		this.submitTime=submitTime;
 		return this;
 	}
 	
-	public String getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 	
-	public Message setUpdateTime(String updateTime) {
+	public Message setUpdateTime(Date updateTime) {
 		this.updateTime=updateTime;
 		return this;
 	}

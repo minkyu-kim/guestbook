@@ -91,7 +91,7 @@
 					<br>
 					<button type="button" class="btn btn-default"
 						onclick='validationCheck();'>저장</button>
-					<input type="hidden" id="hashedPass" name="hashedPass" value="" />
+					<input type="hidden" id="hashedPass" name="pass" value="" />
 				</form>
 			</div>
 		</div>

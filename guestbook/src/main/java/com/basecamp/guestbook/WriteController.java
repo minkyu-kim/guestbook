@@ -15,13 +15,12 @@ public class WriteController {
 	MessageDAO mdao;
 
 	@RequestMapping(value = "/write")
-	public String execute(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+	public String execute(Model model, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
 		if(id!=null) {
 			try {
-				Message message = new Message().setId(Integer.parseInt(id)).setPass(Integer.parseInt(pass));
+				Message message = new MessageDAO.MessageFiller().fill(request);
 				message = mdao.selectOne(message);
 				if(message!=null) {	
 					model.addAttribute("id", message.getId());

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="com.basecamp.guestbook.Message"%>
 <%@ page session="false"%>
 <html>
@@ -95,9 +96,9 @@
 							<td><%=message.getId()%></td>
 							<td><%=message.getEmail()%></td>
 							<td><%=message.getMessage().replaceAll("\n", "</br>")%></td>
-							<td><%=message.getSubmitTime()%> <%
+							<td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getSubmitTime())%> <%
 							 	if (message.getUpdateTime() != null) {
-							 %> </br><%=message.getUpdateTime()%> <%
+							 %> </br><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getUpdateTime())%> <%
 							 	}
 							 %></td>
 							<td><input type="button" id="modify<%=message.getId()%>"
