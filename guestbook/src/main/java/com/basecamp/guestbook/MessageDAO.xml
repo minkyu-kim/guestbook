@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.basecamp.guestbook">
+	<resultMap type="message" id="messageResultMap">
+		<id column="id" property="id" />
+		<result column="email" property="email" />
+		<result column="pass" property="pass" />
+		<result column="message" property="message" />
+		<result column="submitTime" property="submitTime"/>
+		<result column="updateTime" property="updateTime"/>
+	</resultMap>
+
+	<select id="selectAll" resultMap="messageResultMap">
+		select id, email, pass, message,
+		submitTime, updateTime
+		from messages
+		order by id desc
+	</select>
+
+	<insert id="insert" parameterType="message">
+		insert into
+		messages(email, pass, message, submitTime)
+		values
+		(#{email},#{pass},#{message},#{submitTime})
+	</insert>
+
+	<select id="selectOne" parameterType="message" resultMap="messageResultMap">
+		select id, email, pass, message,
+		submitTime, updateTime
+		from messages
+		where id=#{id} and pass=#{pass}
+	</select>
+
+	<update id="update" parameterType="message">
+		update messages set
+		email=#{email},
+		pass=#{pass},
+		message=#{message},
+		updateTime=#{updateTime}
+		where id=#{id}
+	</update>
+</mapper>
