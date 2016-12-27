@@ -21,8 +21,8 @@ public class GuestBookControllerTest {
 	@Autowired
 	private GuestBookController guestbookController;
 	
-	/*
-	 * GuestBookController에서 execute를 실행하였을때 올바른 주소를 리턴하는지 확인 
+	/**
+	 * Test whether GuestBookController.execute() returns correct address. 
 	 */
 	@Test
 	public void executeTest() {
