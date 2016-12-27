@@ -13,8 +13,8 @@ service:
   - mysql
 
 before_script:
-  - mysql -u root -e "USE mysql;INSERT INTO user (Host, User, Password) VALUES ('localhost', 'guestbook', password('rlaalsrb12'));INSERT INTO user (Host, User, Password) VALUES ('%', 'guestbook', password('rlaalsrb12'));FLUSH privileges;CREATE DATABASE guestbookdb;GRANT ALL privileges ON guestbookdb.* TO guestbook@locahost IDENTIFIED BY 'rlaalsrb12';GRANT ALL privileges ON guestbookdb.* TO guestbook@'%' IDENTIFIED BY 'rlaalsrb12';"
-
+  - mysql -u root -e "USE mysql;INSERT INTO user (Host, User, Password) VALUES ('localhost', 'guestbook', password('rlaalsrb12'));INSERT INTO user (Host, User, Password) VALUES ('%', 'guestbook', password('rlaalsrb12'));FLUSH privileges;CREATE DATABASE guestbookdb;GRANT ALL privileges ON guestbookdb.* TO guestbook@locahost IDENTIFIED BY 'rlaalsrb12';GRANT ALL privileges ON guestbookdb.* TO guestbook@'%' IDENTIFIED BY 'rlaalsrb12';CREATE TABLE 'guestbookdb'.'messages' ('id' INT UNSIGNED NOT NULL AUTO_INCREMENT, 'email' VARCHAR(45) NULL DEFAULT NULL, 'pass' INT NULL DEFAULT NULL, 'message' VARCHAR(901) NULL DEFAULT NULL, 'submitTime' DATETIME NOT NULL, 'updateTime' DATETIME NULL DEFAULT NULL, PRIMARY KEY ('id'));insert into messages(email, pass, message, submitTime) values ('test1@test.com',123456,'test1','2016-12-27 16:17:53');insert into messages(email, pass, message, submitTime) values ('test2@test.com',234567,'test2','2016-12-27 16:18:53');insert into messages(email, pass, message, submitTime) values ('test3@test.com',345678,'test3','2016-12-27 16:19:53');"
+  
 script:
         - cd $TRAVIS_BUILD_DIR/guestbook
         - mvn test
