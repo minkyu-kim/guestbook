@@ -13,7 +13,8 @@ service:
   - mysql
 
 before_script:
-  - mysql -u guestbook -p $pass -e 'create database guestbook;'
+  - mysql -u guestbook -p -e 'create database guestbook;'
+  - $pass
 
 script:
         - cd $TRAVIS_BUILD_DIR/guestbook
