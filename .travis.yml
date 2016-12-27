@@ -8,7 +8,16 @@ addons:
       
 jdk:
   - oraclejdk8
+  
+service:
+  - mysql
+
+before_script:
+  - mysql -u guestbook -p $pass -e 'create database guestbook;'
 
 script:
         - cd $TRAVIS_BUILD_DIR/guestbook
         - mvn test
+
+notifications:
+  email: false
