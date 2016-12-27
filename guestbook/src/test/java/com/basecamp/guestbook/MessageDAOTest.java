@@ -22,7 +22,7 @@ public class MessageDAOTest {
 	@Autowired
 	private MessageDAO mdao;
 	
-	/**
+	/*
 	 * 최초에 DB에 레코드가 3개 있는 상태에서 SelectAll()을 하였을 때 3개의 Message를 리턴하는지 확인
 	 */
 	@Test
