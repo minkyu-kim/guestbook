@@ -2,6 +2,7 @@ package com.basecamp.guestbook;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,14 +18,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 		"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/mybatis-config.xml"})
 @WebAppConfiguration
-public class GuestBookControllerTest {
+public class MessageDAOTest {
 	@Autowired
-	private GuestBookController guestbookController;
+	private MessageDAO mdao;
 	
 	@Test
-	public void executeTest() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		String result = guestbookController.execute(model);
-		assertEquals(result,"guestbook");
+	public void selectAllTest() throws Exception {
+		ArrayList<Message> messages = (ArrayList<Message>) mdao.selectAll();
+		assertEquals(messages.size(),3);
 	}
 }
