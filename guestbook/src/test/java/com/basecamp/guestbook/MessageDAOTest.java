@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
@@ -43,12 +44,14 @@ public class MessageDAOTest {
 	 * Initialized Database has three records.
 	 */
 	@Test
+	@Transactional
 	public void selectAllTest() throws Exception {
 		ArrayList<Message> messages = (ArrayList<Message>) mdao.selectAll();
 		assertEquals(messages.size(),3);
 	}
 	
 	@Test
+	@Transactional
 	public void selectOneTest() throws Exception {
 		int id=1;
 		int pass=123456, wrongPass=234567;
@@ -75,6 +78,7 @@ public class MessageDAOTest {
 	 * And it also tests whether stored record in DB has exactly same data as before.
 	 */
 	@Test
+	@Transactional
 	public void insertTest() throws Exception {
 		int id=4;
 		int pass=99999;
