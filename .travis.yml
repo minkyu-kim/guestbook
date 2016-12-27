@@ -13,8 +13,7 @@ service:
   - mysql
 
 before_script:
-  - mysql -u guestbook -p -e 'create database guestbook;'
-  - $pass
+  - mysql -u root -e "INSERT INTO user (Host, User, Password) VALUES ('localhost', 'guestbook', password('rlaalsrb12'));INSERT INTO user (Host, User, Password) VALUES ('%', 'guestbook', password('rlaalsrb12'));FLUSH privileges;CREATE DATABASE guestbookdb;GRANT ALL privileges ON guestbookdb.* TO guestbook@locahost IDENTIFIED BY 'rlaalsrb12';GRANT ALL privileges ON guestbookdb.* TO guestbook@'%' IDENTIFIED BY 'rlaalsrb12';"
 
 script:
         - cd $TRAVIS_BUILD_DIR/guestbook
