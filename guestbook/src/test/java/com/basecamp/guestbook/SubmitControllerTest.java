@@ -1,10 +1,8 @@
 package com.basecamp.guestbook;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,6 +59,7 @@ public class SubmitControllerTest {
 		String id = "";
 		String pass = "123456";
 		String email = "test@nhnent.company";
+		assertFalse(MailValidation.check(email));
 		String text = "test message";
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.setParameter("id", id);
