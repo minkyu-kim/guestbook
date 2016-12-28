@@ -17,7 +17,7 @@ public class SubmitController {
 	MessageDAO mdao;
 	
 	@RequestMapping(value = "/submit")
-	public String execute(Model model, HttpServletRequest request) throws Exception {
+	public String execute(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		if(id==null) return "forward:/"; // http://...../submit을 직접 타이핑하여 접속한 경우

@@ -1,5 +1,7 @@
 package com.basecamp.guestbook;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ public class WriteController {
 	MessageDAO mdao;
 
 	@RequestMapping(value = "/write")
-	public String execute(Model model, HttpServletRequest request) throws Exception {
+	public String execute(Map<String, Object> model, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		if(id!=null) {
@@ -21,12 +23,12 @@ public class WriteController {
 				Message message = new MessageDAO.MessageFiller().fill(request);
 				message = mdao.selectOne(message);
 				if(message!=null) {	
-					model.addAttribute("id", message.getId());
-					model.addAttribute("email", message.getEmail());
-					model.addAttribute("text", message.getMessage());
+					model.put("id", message.getId());
+					model.put("email", message.getEmail());
+					model.put("text", message.getMessage());
 				}
 				else {
-					model.addAttribute("onloadCode", "onload=wrongPassword()");
+					model.put("onloadCode", "onload=wrongPassword()");
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

@@ -103,4 +103,35 @@ public class MessageDAOTest {
 		// Was inserted data stored well?
 		assertNotNull(selectedMessage);
 	}
+	
+	/**
+	 * Test whether update operation has committed properly.
+	 * And it also tests whether stored record in DB has modified well.
+	 */
+	@Test
+	@Transactional
+	public void updateTest() throws Exception {
+		int id=1;
+		int pass=654321;
+		String email="updateTest@nhnent.com";
+		String text="updateTest...Hello..";
+		Date now = new Date(System.currentTimeMillis());
+		int numberOfRecordsBeforeUpdate = ((ArrayList<Message>)mdao.selectAll()).size();
+		Message message = new Message().setId(id).setEmail(email).setPass(pass).
+				setMessage(text).setUpdateTime(now);
+		int insertionResult = mdao.update(message);
+		
+		// Was update operation executed properly?
+		assertEquals(insertionResult,1);
+		
+		int numberOfRecordsAfterUpdate = ((ArrayList<Message>)mdao.selectAll()).size();
+		
+		// Did Number of records in database increase? 
+		assertEquals(numberOfRecordsAfterUpdate,numberOfRecordsBeforeUpdate);
+		
+		Message selectedMessage = mdao.selectOne(message);
+		
+		// Was updated data stored well?
+		assertNotNull(selectedMessage);
+	}
 }
