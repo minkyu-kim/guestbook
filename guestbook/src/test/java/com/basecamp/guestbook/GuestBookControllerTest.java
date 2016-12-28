@@ -1,7 +1,8 @@
 package com.basecamp.guestbook;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +23,14 @@ public class GuestBookControllerTest {
 	private GuestBookController guestbookController;
 	
 	/**
-	 * Test whether GuestBookController.execute() returns correct address. 
+	 * Test whether GuestBookController.execute() returns correct address.
+	 * And it also test whether ArrayList of Messages has all record data.
 	 */
 	@Test
 	public void executeTest() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String result = guestbookController.execute(model);
+		assertEquals(((ArrayList<Message>)model.get("messages")).size(),3);
 		assertEquals(result,"guestbook");
 	}
 }

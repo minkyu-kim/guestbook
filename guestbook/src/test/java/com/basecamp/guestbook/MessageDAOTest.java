@@ -119,10 +119,10 @@ public class MessageDAOTest {
 		int numberOfRecordsBeforeUpdate = ((ArrayList<Message>)mdao.selectAll()).size();
 		Message message = new Message().setId(id).setEmail(email).setPass(pass).
 				setMessage(text).setUpdateTime(now);
-		int insertionResult = mdao.update(message);
+		int updateResult = mdao.update(message);
 		
 		// Was update operation executed properly?
-		assertEquals(insertionResult,1);
+		assertEquals(updateResult,1);
 		
 		int numberOfRecordsAfterUpdate = ((ArrayList<Message>)mdao.selectAll()).size();
 		
