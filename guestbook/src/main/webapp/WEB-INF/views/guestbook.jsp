@@ -95,10 +95,10 @@
 						<tr>
 							<td><%=message.getId()%></td>
 							<td><%=message.getEmail()%></td>
-							<td><%=message.getMessage().replaceAll("\n", "</br>")%></td>
+							<td><%=message.getMessage().replaceAll("\n", "<br>")%></td>
 							<td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getSubmitTime())%> <%
 							 	if (message.getUpdateTime() != null) {
-							 %> </br><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getUpdateTime())%> <%
+							 %> <br><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getUpdateTime())%> <%
 							 	}
 							 %></td>
 							<td><input type="button" id="modify<%=message.getId()%>"
